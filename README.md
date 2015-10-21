@@ -4,6 +4,7 @@ Projet de programmation objet orienté web de LP CISIIE
 
 Manuel d'utilisation/installation
 
+- Créez un fichier lebonappart/app/donnees.ini avec les informations de connexion à la base de données
 
 
 Contribution:
