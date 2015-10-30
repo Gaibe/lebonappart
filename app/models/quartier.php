@@ -2,8 +2,9 @@
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 
-Class Quartier extends Eloquent {
+Class quartier extends Eloquent {
     protected $table = 'quartier';
+    protected $primayKey ='id_quartier';
     public $timestamps = false;
     public function annonce() {
         return $this->hasMany('Annonce', 'id_annonce');
