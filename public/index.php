@@ -1,5 +1,4 @@
 <?php
-echo 'INDEX';
 require '../vendor/autoload.php';
 
 $app = new \Slim\Slim(array(
