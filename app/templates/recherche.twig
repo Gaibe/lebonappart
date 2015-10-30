@@ -12,12 +12,17 @@
   Superficie : <input type="number" name="superficie"><br/>
   <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
   <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
-  <input type="checkbox" name="type_habitation[]" value="Garage">&nbsp;Garage<br/>
-  <input type="checkbox" name="type_habitation[]" value="Villa">&nbsp;Villa<br/>
+ 
+  <select name="Type">
+  {% for type in types %}
+    <option>{{type.nom}}</option>
+  {% endfor %}
+  </select>
+
   Tarif entre : <input type="number" name="min_tarif"> et <input type="number" name="max_tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
  
-  <select name="ddVille">
+  <select name="Ville">
     {% for ville in villes %}
       <option>{{ville.nom}}</option>
     {% endfor %}

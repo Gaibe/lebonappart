@@ -21,11 +21,12 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	$villes = Ville::all();
-
+	$types = Type::all();
 	$urlRech = $app->urlFor('accueil');
 
 	$app->render('recherche.twig', array(
 		'villes'=> $villes,
+		'types'=> $types,
 	));
 
 })->name('recherche');
