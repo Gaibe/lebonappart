@@ -18,7 +18,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	// marche pas $villes = Ville::with('Quartier')->get();
 	$villes = Ville::all();
 	$types = Type::all();
-	$quartiers = quartier::all();
+	$quartiers = Quartier::all();
 	$urlResult = $app->urlFor('resultat');
 
 	$app->render('recherche.twig', array(
@@ -33,17 +33,17 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 $app->post('/Votre-recherche' , function () use ($app) {
 	$app->render('resultat.twig');
 	$resAnnonce = Annonce::with('quartier');
-	
+
 	/*foreach ($resAnnonce as $key => $value) {
 		var_dump($value);
-		GLHF 
+		GLHF
 		*/
-	}
-	
+	//}
+
 	/*
 	->where('ville.nom','=',$_POST['Ville']);
 	*/
-	
+
 
 })->name('resultat');
 
