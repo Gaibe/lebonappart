@@ -32,3 +32,8 @@ INSERT INTO `quartier` (`id_quartier`, `nom`, `id_ville`) VALUES
 
 INSERT INTO `annonce` (`id_annonce`, `description`, `superficie`, `loc_vente`, `prix`, `nb_piece`, `id_type`, `id_vendeur`, `id_quartier`) VALUES
 (2, 'Village de armix, maison de village en pierre t3 rénovée d''environ 80 m² composé d''une cuisine ouverte sur une salle à manger', 80, 'vente', 105000.00, 3, 4, 2, 1);
+
+
+INSERT INTO `image` (`id_image`, `url`, `id_annonce`) VALUES
+(1, 'http://a.visuels.poliris.com/bigs/a/8/7/2/a872041f-4a30.jpg', 2),
+(2, 'http://4.visuels.poliris.com/bigs/4/9/2/1/49215f8d-41d5.jpg', 2);
