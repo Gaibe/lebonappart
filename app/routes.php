@@ -11,17 +11,14 @@ $app->get('/', function () use ($app) {
 	));
 })->name('accueil');
 
-$app->get('/depotAnnonce' , function () use ($app) {
+$app->get('/deposer-votre-annonce' , function () use ($app) {
 	
-	$nouvA = new Annonce();
-
-	$nouvA->save();
 	$app->render('depotAnnonce.twig');
 })->name('depot');
 
 
-$app->get('/recherche' , function () use ($app) {
-
+$app->get('/Rechercher-vos-annonces' , function () use ($app) {
+	$listeVille = Ville::all();
 	$app->render('recherche.twig');
 })->name('recherche');
 
