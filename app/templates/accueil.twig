@@ -1,2 +1,20 @@
-sdfkjnzekfjzne
-<h1> lol</h1>
+﻿<h1> LeBonAppart ! </h1>
+
+
+<h3> Nos dernières annonces : </h3> 
+</br>
+
+<ul>
+    {% for annonce in annonces %}
+        <li>
+
+       
+          {{ annonce.description }}
+        
+ 
+        </li>
+    {% endfor %}
+</ul>
+
+
+<button> Deposer votre annonce !</button>
