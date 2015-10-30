@@ -9,7 +9,21 @@
   Mot(s) clé(s) : <input type="text" name="motcle"><br/>
   <input type="checkbox" name="loc_vente[]" value="Location">&nbsp;Location<br/>
   <input type="checkbox" name="loc_vente[]" value="Vente">&nbsp;Vente<br/>
-  <input type="submit">
+  Superficie : <input type="number" name="superficie"><br/>
+  <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
+  <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
+  <input type="checkbox" name="type_habitation[]" value="Garage">&nbsp;Garage<br/>
+  <input type="checkbox" name="type_habitation[]" value="Villa">&nbsp;Villa<br/>
+  Tarif entre : <input type="number" name="min_tarif"> et <input type="number" name="max_tarif"><br/>
+  Nombre de pièce : <input type="text" name="nb_piece"><br/>
+  <select name="ddVille">
+    <option value="">Ville</option>
+  </select>
+  <select name="ddQuartier">
+    <option value="">Quartier</option>
+  </select>
+
+  <input type="submit" name="lanceRecherche" value="Rechercher">
 </form>
 
 
