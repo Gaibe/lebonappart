@@ -3,28 +3,29 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 Class Annonce extends Eloquent {
 	protected $table = 'annonce';
+
 	public $timestamps = false;
 
 	public function image() {
-		return $this->belongsToMany('Image');
+		return $this->hasMany('Image', 'id_image');
 	}
 	public function quartier() {
-		return $this->hasOne('Quartier');
+		return $this->belongsTo('Quartier', 'id_quatier');
 	}
 	public function type() {
-		return $this->hasOne('Type');
+		return $this->belongsTo('Type', 'id_type');
 	}
 	public function vendeur() {
-		return $this->hasOne('Vendeur');
+		return $this->belongsTo('Vendeur', 'id_vendeur');
 	}
 }
 
 Class Image extends Eloquent {
-	protected $table = 'roles';
+	protected $table = 'image';
 	public $timestamps = false;
 
 	public function annonce() {
-		return $this->hasOne('Annonce');
+		return $this->belongsTo('Annonce', 'id_annonce');
 	}
 }
 
@@ -32,10 +33,10 @@ Class Quartier extends Eloquent {
 	protected $table = 'quartier';
 	public $timestamps = false;
 	public function annonce() {
-		return $this->belongsToMany('Annonce');
+		return $this->hasMany('Annonce', 'id_annonce');
 	}
-	public function annonce() {
-		return $this->hasOne('Ville');
+	public function ville() {
+		return $this->hasOne('Ville', 'id_ville');
 	}
 }
 
@@ -43,7 +44,7 @@ Class Type extends Eloquent {
 	protected $table = 'type';
 	public $timestamps = false;
 	public function annonce() {
-		return $this->belongsToMany('Annonce');
+		return $this->hasMany('Annonce', 'id_annonce');
 	}
 
 }
@@ -52,7 +53,7 @@ Class Vendeur extends Eloquent {
 	protected $table = 'vendeur';
 	public $timestamps = false;
 	public function annonce() {
-		return $this->belongsToMany('Annonce');//hasMany ???
+		return $this->hasMany('Annonce', 'id_annonce');
 	}
 }
 
@@ -60,7 +61,7 @@ Class Ville extends Eloquent {
 	protected $table = 'ville';
 	public $timestamps = false;	
 	public function Quartier() {
-		return $this->hasMany('Quartier');
+		return $this->hasMany('quartier', 'id_quatier');
 	}
 }
 

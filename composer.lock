@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8c963a56f00224197ffb717f133c61f",
+    "hash": "1ac839d7b256020e7aff77480eb7aca4",
     "content-hash": "ae8e08c6aa21a097018b7b65a0612936",
     "packages": [
         {
@@ -132,16 +132,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.1.20",
+            "version": "v5.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4"
+                "reference": "bb2cd1d9c6cb7c4ce80b8d89f899e086f5a4f65b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4",
-                "reference": "4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/bb2cd1d9c6cb7c4ce80b8d89f899e086f5a4f65b",
+                "reference": "bb2cd1d9c6cb7c4ce80b8d89f899e086f5a4f65b",
                 "shasum": ""
             },
             "require": {
@@ -171,11 +171,11 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2015-09-24 11:16:48"
+            "time": "2015-10-19 06:01:02"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.1.20",
+            "version": "v5.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -217,16 +217,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.1.20",
+            "version": "v5.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "874e959d29bb8a93a5a9549241d4292fe8a17332"
+                "reference": "f82f4009e5776a8b0a580fca881694a778b229e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/874e959d29bb8a93a5a9549241d4292fe8a17332",
-                "reference": "874e959d29bb8a93a5a9549241d4292fe8a17332",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/f82f4009e5776a8b0a580fca881694a778b229e6",
+                "reference": "f82f4009e5776a8b0a580fca881694a778b229e6",
                 "shasum": ""
             },
             "require": {
@@ -272,20 +272,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2015-10-13 22:42:48"
+            "time": "2015-10-28 21:57:04"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.1.20",
+            "version": "v5.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "cf634d1b61d80ea1d7749ef71e0ab3c088931463"
+                "reference": "d52a832d3f4b025b82f954cbdef8ee24f6a77e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/cf634d1b61d80ea1d7749ef71e0ab3c088931463",
-                "reference": "cf634d1b61d80ea1d7749ef71e0ab3c088931463",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/d52a832d3f4b025b82f954cbdef8ee24f6a77e77",
+                "reference": "d52a832d3f4b025b82f954cbdef8ee24f6a77e77",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
             },
             "suggest": {
                 "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
-                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (^1.0.4).",
+                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (^1.0.6).",
                 "symfony/var-dumper": "Required to use the dd function (2.7.*)."
             },
             "type": "library",
@@ -326,7 +326,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-10-12 17:24:03"
+            "time": "2015-10-19 06:01:02"
         },
         {
             "name": "nesbot/carbon",
@@ -476,16 +476,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v2.7.5",
+            "version": "v2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "485877661835e188cd78345c6d4eef1290d17571"
+                "reference": "6ccd9289ec1c71d01a49d83480de3b5293ce30c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/485877661835e188cd78345c6d4eef1290d17571",
-                "reference": "485877661835e188cd78345c6d4eef1290d17571",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/6ccd9289ec1c71d01a49d83480de3b5293ce30c8",
+                "reference": "6ccd9289ec1c71d01a49d83480de3b5293ce30c8",
                 "shasum": ""
             },
             "require": {
@@ -498,7 +498,6 @@
                 "psr/log": "~1.0",
                 "symfony/config": "~2.7",
                 "symfony/intl": "~2.4",
-                "symfony/phpunit-bridge": "~2.7",
                 "symfony/yaml": "~2.2"
             },
             "suggest": {
@@ -533,20 +532,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-06 08:36:38"
+            "time": "2015-10-27 15:38:06"
         },
         {
             "name": "twig/twig",
-            "version": "v1.22.3",
+            "version": "v1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540"
+                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ebfc36b7e77b0c1175afe30459cf943010245540",
-                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5868cd822fd6cf626d5f805439575f9c323cee2a",
+                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +558,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22-dev"
+                    "dev-master": "1.23-dev"
                 }
             },
             "autoload": {
@@ -594,7 +593,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-10-13 07:07:02"
+            "time": "2015-10-29 23:29:01"
         }
     ],
     "packages-dev": [],
