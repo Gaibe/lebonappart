@@ -1,17 +1,17 @@
 ﻿<h1> LeBonAppart ! </h1>
 
 
-<h3> Nos dernières annonces : </h3> 
-</br>
+<h3> Nos 3 dernières annonces : </h3> 
+
 
 <ul>
     {% for annonce in annonces %}
         <li>
 
-       
-          {{ annonce.description }}
-        
- 
+        {{ annonce.description }}
+        {% for image in annonce.image %}
+        	image.url;
+ 		{% endfor %}
         </li>
     {% endfor %}
 </ul>

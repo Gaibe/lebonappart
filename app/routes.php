@@ -1,12 +1,14 @@
 <?php
 
 $app->get('/', function () use ($app) {
-	$annonces = Annonce::all();
-	$urlD = $app->urlFor('depot');
+
+	$urlDepot = $app->urlFor('depot');
 	$urlRech = $app->urlFor('recherche');
-	$app->render('accueil.twig', array('
-		annonces'=> $annonces,
-		'url' =>$urlD,
+
+	$annonces = Annonce::with('image')->limit(3)->get(); //limit si beaucoup annonces
+	$app->render('accueil.twig', array(
+		'annonces'=> $annonces,
+		'url' =>$urlDepot,
 		'urlRech' =>$urlRech
 	));
 })->name('accueil');
@@ -18,8 +20,14 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 
 $app->get('/Rechercher-vos-annonces' , function () use ($app) {
-	$listeVille = Ville::all();
-	$app->render('recherche.twig');
+	$villes = Ville::all();
+
+	$urlRech = $app->urlFor('accueil');
+
+	$app->render('recherche.twig', array(
+		'villes'=> $villes,
+	));
+
 })->name('recherche');
 
 ?>

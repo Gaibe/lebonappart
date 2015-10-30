@@ -16,9 +16,13 @@
   <input type="checkbox" name="type_habitation[]" value="Villa">&nbsp;Villa<br/>
   Tarif entre : <input type="number" name="min_tarif"> et <input type="number" name="max_tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
+ 
   <select name="ddVille">
-    <option value="">Ville</option>
+    {% for ville in villes %}
+      <option>{{ville.nom}}</option>
+    {% endfor %}
   </select>
+
   <select name="ddQuartier">
     <option value="">Quartier</option>
   </select>
