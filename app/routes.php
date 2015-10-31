@@ -27,7 +27,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 
 //	dont work
 	$quartiers = quartier::all();
-	var_dump($quartiers);
+	//var_dump($quartiers);
 	// <select name="Quartier">
   // {% for quart in quartiers %}
   //   <option>{{quart.nom}}</option>
@@ -45,11 +45,12 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	));
 })->name('recherche');
 
+//Pour essayer de récuperer le contenu de Annonce::with('quartier')
+$resAnnonce="";
 
-$app->post('/Votre-recherche' , function () use ($app) {
+$app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	$app->render('resultat.twig');
 	$resAnnonce = Annonce::with('quartier')
-
 	// foreach($resAnnonce as $value){
 	// 	var_dump($value);
 	// //	GLHF
@@ -59,10 +60,10 @@ $app->post('/Votre-recherche' , function () use ($app) {
 
 	->where('ville.nom','=',$_POST['Ville']);
 
-return $resAnnonce;
+//return $resAnnonce;	//y'a pas moyen de faire ressortir resAnnonce de la fonction?
 
 })->name('resultat');
-//var_dump($app);
+//var_dump("test ".$resAnnonce);
 
 $app->get('/deposer-votre-annonce' , function () use ($app) {
 	$villes = Ville::all();
