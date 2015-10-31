@@ -53,7 +53,7 @@ $app->post('/Votre-recherche' , function () use ($app) {
 
 	->where('ville.nom','=',$_POST['Ville']);
 
-
+return $resAnnonce;
 
 })->name('resultat');
 //var_dump($app);
