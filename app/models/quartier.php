@@ -2,7 +2,7 @@
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 
-Class quartier extends Eloquent {
+Class Quartier extends Eloquent {
     protected $table = 'quartier';
     protected $primayKey ='id_quartier';
     public $timestamps = false;
