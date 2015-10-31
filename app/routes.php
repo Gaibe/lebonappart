@@ -21,7 +21,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	$types = Type::all();
 
 //	dont work
-	$quartiers = quartier::all();
+	$quartiers = Quartier::all();
 	//var_dump($quartiers);
 	// <select name="Quartier">
   // {% for quart in quartiers %}
