@@ -24,17 +24,17 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	// marche pas $villes = Ville::with('Quartier')->get();
 	$villes = Ville::all();
 	$types = Type::all();
-	/*
-	dont work
-	$quartiers = Quartier::all();
 
-	   <select name="Quartier">
-  {% for quart in quartiers %}
-    <option>{{quart.nom}}</option>
-  {% endfor %}
-  </select>
+//	dont work
+	$quartiers = quartier::all();
+	var_dump($quartiers);
+	// <select name="Quartier">
+  // {% for quart in quartiers %}
+  //   <option>{{quart.nom}}</option>
+  // {% endfor %}
+  // </select>
+	$villes = Ville::with('Quartier')->get();
 
-  */
 	$urlResult = $app->urlFor('resultat');
 
 	$app->render('recherche.twig', array(
