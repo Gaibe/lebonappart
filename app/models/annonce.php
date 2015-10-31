@@ -2,6 +2,7 @@
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 Class Annonce extends Eloquent {
+    protected $primayKey ='id_annonce';
     protected $table = 'annonce';
 
     public $timestamps = false;
