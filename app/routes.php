@@ -49,6 +49,13 @@ $app->post('/Votre-recherche' , function () use ($app) {
 //var_dump($app);
 
 $app->get('/deposer-votre-annonce' , function () use ($app) {
-	$app->render('depotAnnonce.twig');
+	$villes = Ville::all();
+	$types = Type::all();
+	$quartiers = Quartier::all();
+	$app->render('depotAnnonce.twig', array(
+		'villes'=> $villes,
+		'types'=> $types,
+		'quartiers'=> $quartiers
+		));
 })->name('depot');
 ?>
