@@ -7,6 +7,6 @@ Class Image extends Eloquent {
     public $timestamps = false;
 
     public function annonce() {
-        return $this->belongsTo('Annonce', 'id_annonce');
+        return $this->belongsTo('Annonce');
     }
 }

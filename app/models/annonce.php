@@ -7,7 +7,7 @@ Class Annonce extends Eloquent {
     public $timestamps = false;
 
     public function image() {
-        return $this->hasMany('Image', 'id_image');
+        return $this->hasMany('Image', 'id_annonce', 'id_annonce');
     }
     public function quartier() {
         return $this->belongsTo('Quartier', 'id_quatier');
