@@ -18,10 +18,7 @@
   Tarif : <input type="number" name="tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
-  //Pour le depot d'une annonce vaut-il mieux reprendre le système des listes qui
-  // suit pour les villes, quartier, etc... Ou le mec tape au clavier (par exemple
-  // si la ville et/ou le quartier n'existe pas dans la bdd...)
-
+  
   <select name="Ville">
     {% for ville in villes %}
       <option>{{ville.nom}}</option>
