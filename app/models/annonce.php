@@ -11,12 +11,12 @@ Class Annonce extends Eloquent {
         return $this->hasMany('Image', 'id_annonce', 'id_annonce');
     }
     public function quartier() {
-        return $this->belongsTo('Quartier', 'id_quatier');
+        return $this->belongsTo('Quartier', 'id_quartier', 'id_quartier');
     }
     public function type() {
-        return $this->belongsTo('Type', 'id_type');
+        return $this->belongsTo('Type', 'id_type', 'id_type');
     }
     public function vendeur() {
-        return $this->belongsTo('Vendeur', 'id_vendeur');
+        return $this->belongsTo('Vendeur', 'id_vendeur', 'id_vendeur');
     }
 }
