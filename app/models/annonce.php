@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 Class Annonce extends Eloquent {
@@ -19,5 +19,4 @@ Class Annonce extends Eloquent {
     public function vendeur() {
         return $this->belongsTo('Vendeur', 'id_vendeur', 'id_vendeur');
     }
-
 }
