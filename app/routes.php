@@ -46,14 +46,14 @@ $resAnnonce="";
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	$app->render('resultat.twig');
 	$resAnnonce = Annonce::with('quartier')
-	// foreach($resAnnonce as $value){
-	// 	var_dump($value);
-	// //	GLHF
-	//
-	// }
-
 
 	->where('ville.nom','=',$_POST['Ville']);
+	foreach($resAnnonce as $value){
+		var_dump($value);
+	//	GLHF
+
+	}
+
 
 //return $resAnnonce;	//y'a pas moyen de faire ressortir resAnnonce de la fonction?
 
@@ -84,8 +84,8 @@ $app->post('/depot', function() use ($app) {
 	$annonce->quartier = $app->request->post('quartier');
 	$annonce->ville = $app->request->post('ville');
 
-	// var_dump($annonce);
-	$annonce->save();
-	$app->redirect($app->urlFor("accueil"));
+	var_dump($annonce);
+	// $annonce->save();
+	// $app->redirect($app->urlFor("accueil"));
 })->name('depot');
 ?>

@@ -1,4 +1,32 @@
-﻿<h1> LeBonAppart ! </h1>
+<script language="javascript" type="text/javascript">
+<!--
+  function init(){
+
+
+  }
+
+  function actualiser(){
+    alert({{ app.request.getRequestUri() }});
+      var actualiser = document.createElement('form');
+      actualiser.action = '{{ app.request.getRequestUri() }}';
+
+      actualiser.method = 'post';
+      //Maintenant les var pour les donnees
+      var ville = document.createElement('input');
+      ville.name = 'ville';
+      ville.value = document.getElementById('VilleActu');
+      var quartier = document.createElement('input');
+      quartier.name = 'quartier';
+      quartier.value = document.getElementById('QuartierActu');
+      actualiser.appendChild(ville);
+      actualiser.appendChild(quartier);
+      actualiser.submit();
+	}
+-->
+</script>
+
+
+<h1> LeBonAppart ! </h1>
 
 
 <h3> Deposer une annonce. </h3>
@@ -20,21 +48,21 @@
   Prix : <input type="number" name="prix"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
-  <select name="ville">
+  <select name="ville" id="VilleActu">
     {% for ville in villes %}
       <option value={{ville.nom}}>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
-  <select name="type">
-  {% for type in types %}
-    <option value={{type.nom}}>{{type.nom}}</option>
+   <select name="quartier" id="QuartierActu" > <!-- onchange="actualiser()" -->
+  {% for quart in quartiers %}
+    <option value={{quart.nom}}>{{quart.nom}}</option>
   {% endfor %}
   </select>
 
-   <select name="quartier">
-  {% for quart in quartiers %}
-    <option value={{quart.nom}}>{{quart.nom}}</option>
+  <select name="type">
+  {% for type in types %}
+    <option value={{type.nom}}>{{type.nom}}</option>
   {% endfor %}
   </select>
 
