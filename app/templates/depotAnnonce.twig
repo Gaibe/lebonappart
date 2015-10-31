@@ -1,1 +1,50 @@
-kvhrebgkhbdrkg
+<h1> LeBonAppart ! </h1>
+
+
+<h3> Deposer une annonce. </h3>
+</br>
+
+<form action="{{res}}" method="post">
+
+  Titre : <input type="text" name="titre"><br/>
+  <input type="checkbox" name="loc_vente[]" value="Location">&nbsp;Location<br/>
+  <input type="checkbox" name="loc_vente[]" value="Vente">&nbsp;Vente<br/>
+  Superficie : <input type="number" name="superficie"><br/>
+  <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
+  <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
+
+
+
+  Tarif : <input type="number" name="tarif"><br/>
+  Nombre de pièce : <input type="text" name="nb_piece"><br/>
+
+  //Pour le depot d'une annonce vaut-il mieux reprendre le système des listes qui
+  // suit pour les villes, quartier, etc... Ou le mec tape au clavier (par exemple
+  // si la ville et/ou le quartier n'existe pas dans la bdd...)
+
+  <select name="Ville">
+    {% for ville in villes %}
+      <option>{{ville.nom}}</option>
+    {% endfor %}
+  </select>
+
+  <select name="Type">
+  {% for type in types %}
+    <option>{{type.nom}}</option>
+
+  {% endfor %}
+  </select>
+
+   <select name="Quartier">
+  {% for quart in quartiers %}
+    <option>{{quart.nom}}</option>
+  {% endfor %}
+  </select>
+
+
+  <input type="submit" name="lanceDepot" value="Depot">
+</form>
+
+<a href="">
+<button> Deposer votre annonce !</button>
+</a>

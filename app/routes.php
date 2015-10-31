@@ -32,21 +32,21 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app) {
 	$app->render('resultat.twig');
-	$resAnnonce = Annonce::with('quartier');
+	$resAnnonce = Annonce::with('quartier')
 
-	/*foreach ($resAnnonce as $key => $value) {
-		var_dump($value);
-		GLHF
-		*/
-	//}
+	// foreach($resAnnonce as $value){
+	// 	var_dump($value);
+	// //	GLHF
+	//
+	// }
 
-	/*
+
 	->where('ville.nom','=',$_POST['Ville']);
-	*/
+
 
 
 })->name('resultat');
-
+//var_dump($app);
 
 $app->get('/deposer-votre-annonce' , function () use ($app) {
 	$app->render('depotAnnonce.twig');
