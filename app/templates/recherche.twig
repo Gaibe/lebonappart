@@ -12,12 +12,12 @@
   Superficie : <input type="number" name="superficie"><br/>
   <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
   <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
- 
-  
+
+
 
   Tarif entre : <input type="number" name="min_tarif"> et <input type="number" name="max_tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
- 
+
   <select name="Ville">
     {% for ville in villes %}
       <option>{{ville.nom}}</option>
@@ -37,10 +37,13 @@
   {% endfor %}
   </select>
 
-  
+  <br/>
   <input type="submit" name="lanceRecherche" value="Rechercher">
 </form>
+<br/>
 
-<a href="">
+
+
+<a href={{url}}>
 <button> Deposer votre annonce !</button>
 </a>
