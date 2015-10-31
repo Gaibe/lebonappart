@@ -5,7 +5,13 @@ $app->get('/', function () use ($app) {
 	$urlDepot = $app->urlFor('depot');
 	$urlRech = $app->urlFor('recherche');
 
-	$annonces = Annonce::with('image')->limit(3)->get(); //limit si beaucoup annonces
+	$annonces = Annonce::with('image')
+				->with('type')
+				->with('quartier')
+				// ->with('quartier', 'ville')
+				->with('vendeur')
+				->limit(3)->get(); //limit si beaucoup annonces
+
 	$app->render('accueil.twig', array(
 		'annonces'=> $annonces,
 		'url' =>$urlDepot,
