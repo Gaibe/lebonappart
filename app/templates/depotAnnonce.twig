@@ -4,36 +4,35 @@
 <h3> Deposer une annonce. </h3>
 </br>
 
-<form action="{{res}}" method="post">
+<form action="{{action}}" method="post">
 
   Description : 
   <textarea cols="50" rows="3" name="description"></textarea><br/>
+  Type de contrat : 
   <select name="loc_vente">
     <option value="vente">vente</option>
     <option value="location">location</option>
   </select></br>
   Superficie : <input type="number" name="superficie"><br/>
-  <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
-  <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
 
 
 
-  Tarif : <input type="number" name="tarif"><br/>
+  Prix : <input type="number" name="prix"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
-  <select name="Ville">
+  <select name="ville">
     {% for ville in villes %}
       <option value={{ville.nom}}>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
-  <select name="Type">
+  <select name="type">
   {% for type in types %}
     <option value={{type.nom}}>{{type.nom}}</option>
   {% endfor %}
   </select>
 
-   <select name="Quartier">
+   <select name="quartier">
   {% for quart in quartiers %}
     <option value={{quart.nom}}>{{quart.nom}}</option>
   {% endfor %}

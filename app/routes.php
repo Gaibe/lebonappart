@@ -2,7 +2,7 @@
 
 $app->get('/', function () use ($app) {
 
-	$urlDepot = $app->urlFor('depot');
+	$urlDepot = $app->urlFor('deposer-votre-annonce');
 	$urlRech = $app->urlFor('recherche');
 
 	$annonces = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
@@ -64,10 +64,28 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 	$villes = Ville::all();
 	$types = Type::all();
 	$quartiers = Quartier::all();
+	$action = $app->urlFor("depot");
 	$app->render('depotAnnonce.twig', array(
 		'villes'=> $villes,
 		'types'=> $types,
-		'quartiers'=> $quartiers
+		'quartiers'=> $quartiers,
+		'action' => $action
 		));
+})->name('deposer-votre-annonce');
+
+$app->post('/depot', function() use ($app) {
+	$annonce = new Annonce();
+	$annonce->description = $app->request->post('description');
+	$annonce->superficie = $app->request->post('superficie');
+	$annonce->loc_vente = $app->request->post('loc_vente');
+	$annonce->prix = $app->request->post('prix');
+	$annonce->nb_piece = $app->request->post('nb_piece');
+	$annonce->type = $app->request->post('type');
+	$annonce->quartier = $app->request->post('quartier');
+	$annonce->ville = $app->request->post('ville');
+
+	// var_dump($annonce);
+	$annonce->save();
+	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 ?>
