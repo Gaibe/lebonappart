@@ -7,6 +7,9 @@ Class Ville extends Eloquent {
     protected $primayKey ='id_ville';
     public $timestamps = false;
     public function Quartier() {
-        return $this->hasMany('quartier', 'id_ville');
+        return $this->hasMany('quartier', 'id_ville', 'id_ville');
+    }
+    public function Annonce() {
+        return $this->hasManyThrough('Annonce', 'Quartier', 'id_ville', 'id_quartier');
     }
 }
