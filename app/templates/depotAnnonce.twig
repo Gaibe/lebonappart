@@ -6,9 +6,12 @@
 
 <form action="{{res}}" method="post">
 
-  Titre : <input type="text" name="titre"><br/>
-  <input type="checkbox" name="loc_vente[]" value="Location">&nbsp;Location<br/>
-  <input type="checkbox" name="loc_vente[]" value="Vente">&nbsp;Vente<br/>
+  Description : 
+  <textarea cols="50" rows="3" name="description"></textarea><br/>
+  <select name="loc_vente">
+    <option value="vente">vente</option>
+    <option value="location">location</option>
+  </select></br>
   Superficie : <input type="number" name="superficie"><br/>
   <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
   <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
@@ -20,20 +23,19 @@
 
   <select name="Ville">
     {% for ville in villes %}
-      <option>{{ville.nom}}</option>
+      <option value={{ville.nom}}>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
   <select name="Type">
   {% for type in types %}
-    <option>{{type.nom}}</option>
-
+    <option value={{type.nom}}>{{type.nom}}</option>
   {% endfor %}
   </select>
 
    <select name="Quartier">
   {% for quart in quartiers %}
-    <option>{{quart.nom}}</option>
+    <option value={{quart.nom}}>{{quart.nom}}</option>
   {% endfor %}
   </select>
 

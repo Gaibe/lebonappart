@@ -19,4 +19,5 @@ Class Annonce extends Eloquent {
     public function vendeur() {
         return $this->belongsTo('Vendeur', 'id_vendeur', 'id_vendeur');
     }
+
 }
