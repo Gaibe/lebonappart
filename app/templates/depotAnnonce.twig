@@ -1,16 +1,31 @@
 <script language="javascript" type="text/javascript">
 <!--
-  function chemin(){
+  function init(){
+
 
   }
 
   function actualiser(){
-  		var ville = document.getElementById('VilleActu');
-      var quartier = document.getElementById('QuartierActu');
-      
+    alert({{ app.request.getRequestUri() }});
+      var actualiser = document.createElement('form');
+      actualiser.action = '{{ app.request.getRequestUri() }}';
+
+      actualiser.method = 'post';
+      //Maintenant les var pour les donnees
+      var ville = document.createElement('input');
+      ville.name = 'ville';
+      ville.value = document.getElementById('VilleActu');
+      var quartier = document.createElement('input');
+      quartier.name = 'quartier';
+      quartier.value = document.getElementById('QuartierActu');
+      actualiser.appendChild(ville);
+      actualiser.appendChild(quartier);
+      actualiser.submit();
 	}
-//-->
+-->
 </script>
+
+
 <h1> LeBonAppart ! </h1>
 
 
@@ -18,7 +33,6 @@
 </br>
 
 <form action="{{res}}" method="post">
-
   Description :
   <textarea cols="50" rows="3" name="description"></textarea><br/>
   <select name="loc_vente">
@@ -30,18 +44,16 @@
   <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
 
 
-
   Tarif : <input type="number" name="tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
-  <select name="Ville" id="VilleActu"
-  onchange="actualiser()">
+  <select name="Ville" id="VilleActu" > <!-- onchange="actualiser()" pour le js...-->
     {% for ville in villes %}
       <option value={{ville.nom}}>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
-   <select name="Quartier" id="QuartierActu" onchange="actualiser()">
+   <select name="Quartier" id="QuartierActu" > <!-- onchange="actualiser()" -->
   {% for quart in quartiers %}
     <option value={{quart.nom}}>{{quart.nom}}</option>
   {% endfor %}
