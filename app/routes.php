@@ -26,7 +26,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	$types = Type::all();
 
 //	dont work
-	$quartiers = quartier::all();
+	$quartiers = Quartier::all();
 	//var_dump($quartiers);
 	// <select name="Quartier">
   // {% for quart in quartiers %}
@@ -51,14 +51,14 @@ $resAnnonce="";
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	$app->render('resultat.twig');
 	$resAnnonce = Annonce::with('quartier')
-	// foreach($resAnnonce as $value){
-	// 	var_dump($value);
-	// //	GLHF
-	//
-	// }
-
 
 	->where('ville.nom','=',$_POST['Ville']);
+	foreach($resAnnonce as $value){
+		var_dump($value);
+	//	GLHF
+
+	}
+
 
 //return $resAnnonce;	//y'a pas moyen de faire ressortir resAnnonce de la fonction?
 
