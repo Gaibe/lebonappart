@@ -1,6 +1,10 @@
 ﻿<h1> LeBonAppart ! </h1>
 
 
+<a href={{url}} >Deposer une annonce</a>
+</br>
+<a href={{urlRech}} >Recherche</a>  
+
 <h3> Nos 3 dernières annonces : </h3> 
 
 
@@ -10,11 +14,14 @@
 
         {{ annonce.description }}
         {% for image in annonce.image %}
-        	image.url;
+        	<img src={{image.url}}>
  		{% endfor %}
+        <ul>
+        <li>Superficie : {{annonce.superficie}}</li>
+        <li>Nombre de pièces : {{annonce.nb_piece}}</li>
+        <li>Type de contrat : {{annonce.loc_vente}}</li>
+        <li>Prix : {{annonce.prix}}</li>
+        </ul>
         </li>
     {% endfor %}
 </ul>
-
-<a href={{url}} >Deposer</a>
-<a href={{urlRech}} >Recherche</a>  
