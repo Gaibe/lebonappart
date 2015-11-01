@@ -57,6 +57,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
+
 		$resAnnonce = Annonce::with('image','type','quartier')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
@@ -74,12 +75,12 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 		}*/
 
+
 		// Par type
 		if ( $app->request->post('Type') != "----") {
 			
 			$resAnnonce = $resAnnonce->whereHas('type', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Type') );
-
   			});
 
 		}
@@ -114,7 +115,10 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 			$resAnnonce = $resAnnonce->where('prix','>=',$app->request->post('prix'));
 		}
 
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 20cfdf8badf7f74e79caf082508607b27b6e6ac6
 		$resAnnonce = $resAnnonce->get();
 
 
@@ -201,4 +205,48 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
+<<<<<<< HEAD
+=======
+//Validation modification
+
+$app->post('/valider-modif/:id/', function($id) use ($app) {
+	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
+		->where("id_annonce", "=", $id)
+		->get();
+	$annonce->description = $app->request->post('description');
+	$annonce->superficie = $app->request->post('superficie');
+	$annonce->loc_vente = $app->request->post('loc_vente');
+	$annonce->prix = $app->request->post('prix');
+	$annonce->nb_piece = $app->request->post('nb_piece');
+	$annonce->id_type = $app->request->post('type');
+	$annonce->id_vendeur = 1; // ??
+	$annonce->id_quartier = $app->request->post('quartier');
+	$vendeur = new Vendeur();
+	$vendeur = Vendeur::where('mail', '=', $app->request->post('vendeur-email'))->first();
+	if ($vendeur == null)
+	{
+		$vendeur = new Vendeur();
+		$vendeur->name = $app->request->post('vendeur');
+		$vendeur->mail = $app->request->post('vendeur-email');
+		$vendeur->num_tel = $app->request->post('vendeur-telephone');
+		$vendeur->save();
+	}
+	$annonce->id_vendeur = $vendeur->id_vendeur;
+	$annonce->save();
+	$max_image = 3;
+	for ($i = 1;  $i <= $max_image; $i++)
+	{
+		if($app->request->post('img-url-'.$i) != null)
+		{
+			$img = new Image();
+			$img->url = $app->request->post('img-url-'.$i);
+			$img->id_annonce = $annonce->id_annonce;
+			$img->save();
+		}
+	}
+	$app->redirect($app->urlFor("accueil"));
+
+})->name("/valider-modif");
+
+>>>>>>> 20cfdf8badf7f74e79caf082508607b27b6e6ac6
 ?>
