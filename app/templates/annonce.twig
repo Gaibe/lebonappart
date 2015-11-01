@@ -2,7 +2,7 @@
 
 <li>
 
-<a href={{annonce.id_annonce}}>{{ annonce.description }}</a>
+<h3>{{annonce.id_annonce}} : {{ annonce.description }}</div>
 {% for image in annonce.image %}
   <img style="max-width:250px;" src={{image.url}}>
 {% endfor %}
