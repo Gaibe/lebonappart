@@ -118,7 +118,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 
 		
-		$resAnnonce = $resAnnonce->limit->(6)->get();
+		$resAnnonce = $resAnnonce->limit(6)->get();
 
 
 	$app->render('resultat.twig', array(
@@ -204,21 +204,10 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
-//Validation modification
-
-$app->post('/modification/:id/', function($id) use ($app) {
+$app->post('/suppression/:id', function($id) use($app) {
 	$annonce = Annonce::with('vendeur')
 		->where("id_annonce", "=", $id)
-		->get();
-	echo($annonce);
-	$villes = Ville::all();
-	$types = Type::all();
-	$quartiers = Quartier::all();
-	$app->render('modification.twig', array(
-		'villes'=> $villes,
-		'types'=> $types,
-		'quartiers'=> $quartiers,
-		'annonce' => $annonce
-	));
-})->name("modification");
+		->delete();
+	$app->redirect($app->urlFor("accueil"));
+})->name("suppression");
 ?>
