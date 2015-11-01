@@ -62,18 +62,15 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
-		/*if ( $app->request->post('Ville') != "----") {
-
-			$resAnnonce = $resAnnonce->with('Quartier');
-
-			$resAnnonce = $resAnnonce->whereHas('quartier', function ($query) use($app){
+		if ( $app->request->post('Ville') != "----") {
 
 
+			$resAnnonce = $resAnnonce->whereHas('quartier.ville', function ($query) use($app){
 
 	  			$query->where('nom','=',$app->request->post('Ville') );
   			});
 
-		}*/
+		}
 
 
 		// Par type
