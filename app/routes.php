@@ -176,4 +176,22 @@ $app->post('/modification/:id/', function($id) use ($app) {
 		'annonce' => $annonce
 	));
 })->name("modification");
+
+//Validation modification
+
+$app->post('/modification/:id/', function($id) use ($app) {
+	$annonce = Annonce::with('vendeur')
+		->where("id_annonce", "=", $id)
+		->get();
+	echo($annonce);
+	$villes = Ville::all();
+	$types = Type::all();
+	$quartiers = Quartier::all();
+	$app->render('modification.twig', array(
+		'villes'=> $villes,
+		'types'=> $types,
+		'quartiers'=> $quartiers,
+		'annonce' => $annonce
+	));
+})->name("modification");
 ?>
