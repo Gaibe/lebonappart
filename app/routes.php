@@ -55,6 +55,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
+
 	$resAnnonce = Annonce::
 		where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
@@ -70,20 +71,32 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 		$resAnnonce = $resAnnonce->get();
 	
-		// $resAnnonce->where('loc_vente', '=','Vente');
-
-	/*if ( $app->request->post('Vente')== 'vente' )
-		$resAnnonce->where('type','=','vente');
-
-	
-	*/
 
 
 	 
+/* CODE VICTO
+	$resAnnonce = Annonce::where('description', 'LIKE','%'.$app->request->post('motcle').'%')->get();
+
+	if($app->request->post('loc_vente')[0] == "Location"){
+
+		if(isset($app->request->post('loc_vente')[1])){
+			//location et location coche
+			$resAnnonce = Annonce::where('loc_vente', '=', 'location')
+			              ->orWhere('loc_vente', '=', 'vente')->get();
+		}else{
+			//vente coche
+			$resAnnonce = Annonce::where('loc_vente', '=', 'location')->get();
+		}
+	}else if($app->request->post('loc_vente')[0] == "Vente"){
+		//location coche
+		$resAnnonce = Annonce::where('loc_vente', '=', 'vente')->get();
+	}
+
 
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
 	));
+	*/
 	
 })->name('resultat');
 
