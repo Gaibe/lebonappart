@@ -6,9 +6,15 @@ Projet de programmation objet orienté web de LP CISIIE
 
 - Créez un fichier lebonappart/app/donnees.ini avec les informations de connexion à la base de données.
 
-- Executez les requêtes sql du fichier database.sql dans l'outil de gestion de base de données utilisé.
+- Executez les requêtes sql du fichier script/database.sql dans l'outil de gestion de base de données utilisé.
 
-- Consultez le site ./lebonappart/public/.
+- Executer les requêtes sql du fichier script/donnnees-test.sql pour avoir une annonce test dans la base de données
+
+- Consultez le site votre/chemin/lebonappart/public/
+
+Vous y trouverez : un lien pour déposer une annonce, un lien pour faire une recherche, et les 3 dernières annonces
+
+Vous pourrez cliquer sur une annonce pour la modifier ou la supprimer
 
 
 ###Contribution:
