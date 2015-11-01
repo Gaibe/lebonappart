@@ -23,7 +23,9 @@ Création de la base de données
 
 Programmation du depot d'annonce
 
-Amérlioration du rendu de la page d'accueil
+Amélioration du rendu de la page d'accueil
+
+Création des relations avec Eloquent
 
 
 ####  - Fabien
