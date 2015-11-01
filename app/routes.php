@@ -57,14 +57,11 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
-
-		
-
-		$resAnnonce = Annonce::with('image', 'quartier')
+		$resAnnonce = Annonce::with('image','type','quartier')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
-		if ( $app->request->post('Ville') != "----") {
+		/*if ( $app->request->post('Ville') != "----") {
 
 			$resAnnonce = $resAnnonce->with('Quartier');
 
@@ -75,11 +72,11 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	  			$query->where('nom','=',$app->request->post('Ville') );
   			});
 
-		}
+		}*/
 
 		// Par type
 		if ( $app->request->post('Type') != "----") {
-			$resAnnonce = $resAnnonce->with('Type');
+			
 			$resAnnonce = $resAnnonce->whereHas('type', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Type') );
 
@@ -88,7 +85,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 		// Par quartier
 		if ( $app->request->post('Quartier') != "----") {
-			$resAnnonce = $resAnnonce->with('Quartier');
+			
 			$resAnnonce = $resAnnonce->whereHas('quartier', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Quartier') );
   			});
@@ -118,7 +115,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 
 		
-		$resAnnonce = $resAnnonce->limit->(6)->get();
+		$resAnnonce = $resAnnonce->get();
 
 
 	$app->render('resultat.twig', array(
@@ -204,21 +201,4 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
-//Validation modification
-
-$app->post('/modification/:id/', function($id) use ($app) {
-	$annonce = Annonce::with('vendeur')
-		->where("id_annonce", "=", $id)
-		->get();
-	echo($annonce);
-	$villes = Ville::all();
-	$types = Type::all();
-	$quartiers = Quartier::all();
-	$app->render('modification.twig', array(
-		'villes'=> $villes,
-		'types'=> $types,
-		'quartiers'=> $quartiers,
-		'annonce' => $annonce
-	));
-})->name("modification");
 ?>
