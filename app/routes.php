@@ -194,7 +194,7 @@ $app->post('/suppression/:id', function($id) use($app) {
 
 //Validation modification dans bdd
 
-$app->post('/valider-modif/:id/', function($id) use ($app) {
+$app->post('/modification/valider-modif/:id/', function($id) use ($app) {
 	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
 		->where("id_annonce", "=", $id)
 		->get();
