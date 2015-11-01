@@ -47,10 +47,11 @@ Classes + relations entre elles.
 Système de navigation urlFor.
 Liste de choix dans dépôt/recherche annonce (ville/quartier...)
 
-Routes :
-- Page accueil
-- Recherche annonce
-- Résultat recherche annonce
+Routes(route.php) :
+- Page accueil.
+- Recherche annonce.
+- Résultat recherche annonce.
+
 Twig :
 - Recherche
 - Résultats des recherches

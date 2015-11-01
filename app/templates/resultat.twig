@@ -1,11 +1,12 @@
-﻿Voici les résultats de votre recherche : 
+﻿<h2>Voici les 10 résultats les plus pertinents : </h2>
 
-
+<ul style="border:1px solid black;">
 {% for annonce in annonces %}
  
- <li>
+ <li >
 
-        <a href={{annonce.id_annonce}}>{{ annonce.description }}</a>
+     <a href={{annonce.id_annonce}}>{{ annonce.description }}</a>
+  </li>
         {% for image in annonce.image %}
         	<img style="max-width:250px;" src={{image.url}}>
  		{% endfor %}
@@ -23,3 +24,4 @@
 
  
 {% endfor %}
+</ul>

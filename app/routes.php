@@ -5,7 +5,7 @@ $app->get('/', function () use ($app) {
 	$urlDepot = $app->urlFor('deposer-votre-annonce');
 	$urlRech = $app->urlFor('recherche');
 
-	$annonces = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
+	$annonces = Annonce::with('image', 'type', 'quartier', 'quartier.ville','vendeur')
 				->limit(3)->orderBy('id_annonce', 'DESC')->get();
 	$app->render('accueil.twig', array(
 		'annonces'=> $annonces,
