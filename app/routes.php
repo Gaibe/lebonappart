@@ -58,7 +58,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 
-		$resAnnonce = Annonce::with('image','type','quartier')
+		$resAnnonce = Annonce::with('image','type','quartier','vendeur')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
@@ -115,10 +115,6 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 			$resAnnonce = $resAnnonce->where('prix','>=',$app->request->post('prix'));
 		}
 
-<<<<<<< HEAD
-		
-=======
->>>>>>> 20cfdf8badf7f74e79caf082508607b27b6e6ac6
 		$resAnnonce = $resAnnonce->get();
 
 
@@ -205,8 +201,7 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
-<<<<<<< HEAD
-=======
+
 //Validation modification
 
 $app->post('/valider-modif/:id/', function($id) use ($app) {
@@ -248,5 +243,5 @@ $app->post('/valider-modif/:id/', function($id) use ($app) {
 
 })->name("/valider-modif");
 
->>>>>>> 20cfdf8badf7f74e79caf082508607b27b6e6ac6
+
 ?>
