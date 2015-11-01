@@ -18,19 +18,19 @@
 
         <select name="ville" id="VilleActu">
             {% for ville in villes %}
-                <option {% if ville.id_ville == "location"%}selected="selected"{% endif %} value={{ville.id_ville}}>{{ville.nom}}</option>
+                <option {% if annonce.quartier.ville.id_ville == ville.id_ville%}selected="selected"{% endif %} value={{ville.id_ville}}>{{ville.nom}}</option>
             {% endfor %}
         </select>
 
         <select name="quartier" id="QuartierActu" > <!-- onchange="actualiser()" -->
             {% for quart in quartiers %}
-                <option value={{quart.id_quartier}}>{{quart.nom}}</option>
+                <option {% if annonce.quartier.id_quartier == quart.id_quartier%}selected="selected"{% endif %} value={{quart.id_quartier}}>{{quart.nom}}</option>
             {% endfor %}
         </select>
 
         <select name="type">
             {% for type in types %}
-                <option value={{type.id_type}}>{{type.nom}}</option>
+                <option {% if annonce.id_type == type.id_type%}selected="selected"{% endif %} value={{type.id_type}}>{{type.nom}}</option>
             {% endfor %}
         </select>
         </br>
