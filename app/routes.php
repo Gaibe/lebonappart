@@ -54,8 +54,32 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 })->name('deposer-votre-annonce');
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
+
+	$resAnnonce = Annonce::
+		where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+
+		if (!( $app->request->post('location') != NULL && $app->request->post('vente') != NULL) ) {
+
+		
+			if ( $app->request->post('location') == 'Location')
+				$resAnnonce = $resAnnonce->where('loc_vente','=','location');
+			if ( $app->request->post('vente') == 'Vente')
+				$resAnnonce = $resAnnonce->where('loc_vente','=','vente');
+		}
+
+
+		$resAnnonce = $resAnnonce->get();
 	
-	$resAnnonce = Annonce::where('description', 'LIKE','%'.$app->request->post('motcle').'%' )->get(); 
+		// $resAnnonce->where('loc_vente', '=','Vente');
+
+	/*if ( $app->request->post('Vente')== 'vente' )
+		$resAnnonce->where('type','=','vente');
+
+	
+	*/
+
+
+	 
 
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
