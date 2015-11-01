@@ -20,7 +20,7 @@
         <li>Nombre de pièces : {{annonce.nb_piece}}</li>
         <li>Type de bien : {{annonce.type.nom}}</li>
         <li>Quartier : {{annonce.quartier.nom}}</li>
-        <li>Ville : {{annonce.quartier.ville.nom}}</li>
+        <li>Ville : {{annonce.quartier['nom']}}</li>
         <li>Type de contrat : {{annonce.loc_vente}}</li>
         <li>Prix : {{annonce.prix}} €</li>
         <li>Vendeur : {{annonce.vendeur.name}}</li>
