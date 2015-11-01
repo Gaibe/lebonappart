@@ -153,26 +153,34 @@ $app->post('/depot', function() use ($app) {
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 
+
+
 $app->get('/:id', function($id) use ($app) {
 
-	$annonce = Annonce::where("id_annonce", "=", $id)->get();
+	$annonce = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
+						->where("id_annonce", "=", $id)->get();
 	$app->render('annonce.twig', array(
 		'annonce' => $annonce));
 })->name("annonce");
 
+
+
+
 $app->post('/modification/:id/', function($id) use ($app) {
 
-	$annonce = Annonce::with('vendeur')
+	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
 		->where("id_annonce", "=", $id)
 		->get();
-	echo($annonce);
+	$types = Type::all();
 	$villes = Ville::all();
 	$types = Type::all();
 	$quartiers = Quartier::all();
+
+	echo($annonce);
 	$app->render('modification.twig', array(
-		'villes'=> $villes,
 		'types'=> $types,
 		'quartiers'=> $quartiers,
+		'villes' => $villes,
 		'annonce' => $annonce
 	));
 })->name("modification");
