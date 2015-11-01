@@ -39,7 +39,12 @@ Création du diagramme des classes
 
 Aide à la création des diagrammes de séquences
 
-Programmation
+Programmation :
+
+- Page accueil
+- Recherche annonce
+- Résultat recherche annonce
+Avec les fichier twig associés.
 
 
 ####  - Kévin

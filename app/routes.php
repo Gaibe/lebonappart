@@ -21,10 +21,6 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	$types = Type::all();
 	$quartiers = Quartier::all();
 
-
-
-	$villes = Ville::with('Quartier')->get();
-
 	$urlResult = $app->urlFor('resultat');
 
 	$app->render('recherche.twig', array(
