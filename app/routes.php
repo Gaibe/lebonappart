@@ -58,7 +58,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 
-		$resAnnonce = Annonce::with('image','type','quartier','vendeur')
+		$resAnnonce = Annonce::with('image','type','quartier','vendeur','quartier.ville')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
