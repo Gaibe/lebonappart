@@ -23,7 +23,9 @@ Création de la base de données
 
 Programmation du depot d'annonce
 
-Amérlioration du rendu de la page d'accueil
+Amélioration du rendu de la page d'accueil
+
+Création des relations avec Eloquent
 
 
 ####  - Fabien
@@ -47,10 +49,11 @@ Classes + relations entre elles.
 Système de navigation urlFor.
 Liste de choix dans dépôt/recherche annonce (ville/quartier...)
 
-Routes :
-- Page accueil
-- Recherche annonce
-- Résultat recherche annonce
+Routes(route.php) :
+- Page accueil.
+- Recherche annonce.
+- Résultat recherche annonce.
+
 Twig :
 - Recherche
 - Résultats des recherches
