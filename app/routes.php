@@ -42,16 +42,13 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app) {
 	$app->render('resultat.twig');
-	$resAnnonce = Annonce::with('quartier')
+	$resAnnonce = Annonce::with('quartier')->get();
 
 	// foreach($resAnnonce as $value){
 	// 	var_dump($value);
 	// //	GLHF
 	//
 	// }
-
-
-	->where('ville.nom','=',$_POST['Ville']);
 
 
 

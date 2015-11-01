@@ -7,9 +7,9 @@ Class quartier extends Eloquent {
     protected $primayKey ='id_quartier';
     public $timestamps = false;
     public function annonce() {
-        return $this->hasMany('Annonce', 'id_annonce');
+        return $this->hasMany('annonce', 'id_annonce');
     }
     public function ville() {
-        return $this->hasOne('Ville', 'id_ville');
+        return $this->hasOne('ville', 'id_ville');
     }
 }
