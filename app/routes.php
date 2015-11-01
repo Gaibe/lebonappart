@@ -88,12 +88,20 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 		//Superficie
 		if ( $app->request->post('superficie') > 0) {
-			$resAnnonce = $resAnnonce->where('superficie','<=',$app->request->post('superficie'));
+			$resAnnonce = $resAnnonce->where('superficie','>=',$app->request->post('superficie'));
 		}
-
+		//nb piece
+		if ( $app->request->post('nb_piece') ) {
+			$resAnnonce = $resAnnonce->where('nb_piece','>=',$app->request->post('nb_piece'));
+		}
+		//prix
+		if ( $app->request->post('prix') ) {
+			$resAnnonce = $resAnnonce->where('prix','>=',$app->request->post('prix'));
+		}
 
 		$resAnnonce = $resAnnonce->get();
 	
+
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
 	));
