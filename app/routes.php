@@ -197,7 +197,7 @@ $app->post('/suppression/:id', function($id) use($app) {
 
 
 
-//Validation modification
+//Validation modification dans bdd
 
 $app->post('/valider-modif/:id/', function($id) use ($app) {
 	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
@@ -236,6 +236,6 @@ $app->post('/valider-modif/:id/', function($id) use ($app) {
 	}
 	$app->redirect($app->urlFor("accueil"));
 
-})->name("/valider-modif");
+})->name("valider-modif");
 
 ?>
