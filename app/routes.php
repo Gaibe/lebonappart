@@ -56,8 +56,9 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
-		$resAnnonce = Annonce::with('image','type','quartier','vendeur','quartier.ville')
+		$resAnnonce = Annonce::with('image','type', 'quartier','quartier.ville','vendeur')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+
 
 		// Ville
 		if ( $app->request->post('Ville') != "----") {
@@ -66,19 +67,18 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
   			});
 
 		}
-
-
 		// Par type
 		if ( $app->request->post('Type') != "----") {
-			
+
 			$resAnnonce = $resAnnonce->whereHas('type', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Type') );
+
   			});
 
 		}
 		// Par quartier
 		if ( $app->request->post('Quartier') != "----") {
-			
+
 			$resAnnonce = $resAnnonce->whereHas('quartier', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Quartier') );
   			});
@@ -107,7 +107,8 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 			$resAnnonce = $resAnnonce->where('prix','>=',$app->request->post('prix'));
 		}
 
-		$resAnnonce = $resAnnonce->get();
+
+		$resAnnonce = $resAnnonce->limit(10)->get();
 
 
 	$app->render('resultat.twig', array(
@@ -191,6 +192,14 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
+$app->post('/suppression/:id', function($id) use($app) {
+	$annonce = Annonce::with('vendeur')
+		->where("id_annonce", "=", $id)
+		->delete();
+	$app->redirect($app->urlFor("accueil"));
+})->name("suppression");
+
+
 
 //Validation modification
 
@@ -232,6 +241,5 @@ $app->post('/valider-modif/:id/', function($id) use ($app) {
 	$app->redirect($app->urlFor("accueil"));
 
 })->name("/valider-modif");
-
 
 ?>
