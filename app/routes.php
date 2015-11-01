@@ -55,10 +55,28 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
+	
+	$r = Annonce::with('type');
+	$r = $r->whereHas('type', function ($query) {
+      $query->where('nom','maison');
+  	});
+	$r = $r->get();
+
+
+
 
 	$resAnnonce = Annonce::
-		where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+	where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+		
+		if ( $app->request->post('Type') != "----") {
+			$resAnnonce = $resAnnonce->with('Type');
+			$resAnnonce = $resAnnonce->whereHas('type', function ($query) {
+      			$query->where('nom','maison');
+  			});
 
+		}
+		
+		// Location / vente
 		if (!( $app->request->post('location') != NULL && $app->request->post('vente') != NULL) ) {
 			//location
 			if ( $app->request->post('location') == 'Location')
@@ -67,10 +85,16 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 			if ( $app->request->post('vente') == 'Vente')
 				$resAnnonce = $resAnnonce->where('loc_vente','=','vente');
 		}
+		//Superficie
 		if ( $app->request->post('superficie') > 0) {
 			$resAnnonce = $resAnnonce->where('superficie','<=',$app->request->post('superficie'));
 		}
 
+
+		// Par types
+
+
+		
 
 
 

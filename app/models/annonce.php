@@ -15,7 +15,7 @@ Class Annonce extends Eloquent {
         return $this->belongsTo('Quartier', 'id_quartier', 'id_quartier');
     }
     public function type() {
-        return $this->belongsTo('Type', 'id_type', 'id_type');
+        return $this->hasOne('Type', 'id_type', 'id_type');
     }
     public function vendeur() {
         return $this->belongsTo('Vendeur', 'id_vendeur', 'id_vendeur');

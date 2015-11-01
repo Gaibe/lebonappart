@@ -6,7 +6,7 @@ Class Type extends Eloquent {
     protected $table = 'type';
     public $timestamps = false;
     public function annonce() {
-        return $this->hasMany('Annonce', 'id_type', 'id_type');
+        return $this->belongsTo('Annonce', 'id_type', 'id_type');
     }
 
 }

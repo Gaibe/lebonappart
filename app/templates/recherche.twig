@@ -11,9 +11,7 @@
   <input type="checkbox" name="vente" value="Vente">&nbsp;Vente<br/>
 
   Superficie : <input type="number" name="superficie"><br/>
-  
-  <input type="checkbox" name="type_habitation[]" value="Maison">&nbsp;Maison<br/>
-  <input type="checkbox" name="type_habitation[]" value="Appartement">&nbsp;Appartement<br/>
+
 
 
 
@@ -27,7 +25,9 @@
   </select>
 
   <select name="Type">
+    <option selected >----</option>
   {% for type in types %}
+
     <option>{{type.nom}}</option>
 
   {% endfor %}
