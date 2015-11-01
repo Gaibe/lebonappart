@@ -197,7 +197,7 @@ $app->post('/suppression/:id', function($id) use($app) {
 $app->post('/modification/valider-modif/:id/', function($id) use ($app) {
 	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
 		->where("id_annonce", "=", $id)
-		->get();
+		->first();
 	$annonce->description = $app->request->post('description');
 	$annonce->superficie = $app->request->post('superficie');
 	$annonce->loc_vente = $app->request->post('loc_vente');
