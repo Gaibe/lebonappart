@@ -172,11 +172,53 @@ $app->post('/depot', function() use ($app) {
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 
+
+
 $app->get('/:id', function($id) use ($app) {
+
 	$annonce = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
-				->where("id_annonce", "=", $id)->get();
-	//$annonce = Annonce::where("id_annonce", "=", $id)->get();
+						->where("id_annonce", "=", $id)->get();
 	$app->render('annonce.twig', array(
 		'annonce' => $annonce));
-})->name('annonce');
+})->name("annonce");
+
+
+
+
+$app->post('/modification/:id/', function($id) use ($app) {
+
+	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
+		->where("id_annonce", "=", $id)
+		->get();
+	$types = Type::all();
+	$villes = Ville::all();
+	$types = Type::all();
+	$quartiers = Quartier::all();
+
+	echo($annonce);
+	$app->render('modification.twig', array(
+		'types'=> $types,
+		'quartiers'=> $quartiers,
+		'villes' => $villes,
+		'annonce' => $annonce
+	));
+})->name("modification");
+
+//Validation modification
+
+$app->post('/modification/:id/', function($id) use ($app) {
+	$annonce = Annonce::with('vendeur')
+		->where("id_annonce", "=", $id)
+		->get();
+	echo($annonce);
+	$villes = Ville::all();
+	$types = Type::all();
+	$quartiers = Quartier::all();
+	$app->render('modification.twig', array(
+		'villes'=> $villes,
+		'types'=> $types,
+		'quartiers'=> $quartiers,
+		'annonce' => $annonce
+	));
+})->name("modification");
 ?>

@@ -1,0 +1,47 @@
+<h1> LeBonAppart ! </h1>
+
+
+<h3> Modifier une annonce. </h3>
+</br>
+{% for annonce in annonce %}
+    <form action="modif" method="post">
+        Description :
+        <textarea cols="50" rows="3" name="description" >{{annonce.description}}</textarea><br/>
+        Type de contrat :
+        <select name="loc_vente">
+            <option value="vente">vente</option>
+            <option {% if annonce.loc_vente == "location"%}selected="selected"{% endif %} value="location">location</option>
+        </select></br>
+        Superficie : <input type="number" name="superficie" value="{{ annonce.superficie }}"><br/>
+        Prix : <input type="number" name="prix" value="{{ annonce.prix }}"><br/>
+        Nombre de pièce : <input type="text" name="nb_piece" value="{{ annonce.nb_piece }}"><br/>
+
+        <select name="ville" id="VilleActu">
+            {% for ville in villes %}
+                <option {% if annonce.quartier.ville.id_ville == ville.id_ville%}selected="selected"{% endif %} value={{ville.id_ville}}>{{ville.nom}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="quartier" id="QuartierActu" > <!-- onchange="actualiser()" -->
+            {% for quart in quartiers %}
+                <option {% if annonce.quartier.id_quartier == quart.id_quartier%}selected="selected"{% endif %} value={{quart.id_quartier}}>{{quart.nom}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="type">
+            {% for type in types %}
+                <option {% if annonce.id_type == type.id_type%}selected="selected"{% endif %} value={{type.id_type}}>{{type.nom}}</option>
+            {% endfor %}
+        </select>
+        </br>
+        Votre nom :
+        <input type="text" name="vendeur" value="test" value="{{ annonce.vendeur.name }}">
+        Votre email :
+        <input type="email" name="vendeur-email" value="{{ annonce.vendeur.mail }}">
+        Votre numéro de téléphone :
+        <input type="number" name="vendeur-telephone" value="{{ annonce.vendeur.num_tel }}">
+
+        <br/>
+        <input type="submit" name="modif" value="Modifier votre annonce">
+    </form>
+{% endfor %}
