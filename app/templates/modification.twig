@@ -4,7 +4,7 @@
 <h3> Modifier une annonce. </h3>
 </br>
 {% for annonce in annonce %}
-    <form action="valider-modif" method="post">
+    <form action="valider-modif/{{ annonce.id_annonce }}" method="post">
         Description :
         <textarea cols="50" rows="3" name="description" >{{annonce.description}}</textarea><br/>
         Type de contrat :

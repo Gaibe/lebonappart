@@ -23,7 +23,9 @@ Création de la base de données
 
 Programmation du depot d'annonce
 
-Amérlioration du rendu de la page d'accueil
+Amélioration du rendu de la page d'accueil
+
+Création des relations avec Eloquent
 
 
 ####  - Fabien
@@ -59,5 +61,12 @@ Twig :
 ####  - Kévin
 
 Création des diagrammes de séquences
+Route :
+- Acces annonce
+- Modification annonce
+- Suppression annonce
+Twig :
+-Acces annonce
+-Modification annonce
 
 Programmation
