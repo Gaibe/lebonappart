@@ -60,13 +60,18 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		if (!( $app->request->post('location') != NULL && $app->request->post('vente') != NULL) ) {
-
-		
+			//location
 			if ( $app->request->post('location') == 'Location')
 				$resAnnonce = $resAnnonce->where('loc_vente','=','location');
+			//vente
 			if ( $app->request->post('vente') == 'Vente')
 				$resAnnonce = $resAnnonce->where('loc_vente','=','vente');
 		}
+		if ( $app->request->post('superficie') > 0) {
+			$resAnnonce = $resAnnonce->where('superficie','<=',$app->request->post('superficie'));
+		}
+
+
 
 
 		$resAnnonce = $resAnnonce->get();
@@ -92,11 +97,11 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		$resAnnonce = Annonce::where('loc_vente', '=', 'vente')->get();
 	}
 
-
+*/
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
 	));
-	*/
+	
 	
 })->name('resultat');
 
