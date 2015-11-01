@@ -187,19 +187,43 @@ $app->post('/modification/:id/', function($id) use ($app) {
 
 //Validation modification
 
-$app->post('/modification/:id/', function($id) use ($app) {
-	$annonce = Annonce::with('vendeur')
+$app->post('/valider-modif/:id/', function($id) use ($app) {
+	$annonce = Annonce::with('vendeur','quartier', 'quartier.ville')
 		->where("id_annonce", "=", $id)
 		->get();
-	echo($annonce);
-	$villes = Ville::all();
-	$types = Type::all();
-	$quartiers = Quartier::all();
-	$app->render('modification.twig', array(
-		'villes'=> $villes,
-		'types'=> $types,
-		'quartiers'=> $quartiers,
-		'annonce' => $annonce
-	));
-})->name("modification");
+	$annonce->description = $app->request->post('description');
+	$annonce->superficie = $app->request->post('superficie');
+	$annonce->loc_vente = $app->request->post('loc_vente');
+	$annonce->prix = $app->request->post('prix');
+	$annonce->nb_piece = $app->request->post('nb_piece');
+	$annonce->id_type = $app->request->post('type');
+	$annonce->id_vendeur = 1; // ??
+	$annonce->id_quartier = $app->request->post('quartier');
+	$vendeur = new Vendeur();
+	$vendeur = Vendeur::where('mail', '=', $app->request->post('vendeur-email'))->first();
+	if ($vendeur == null)
+	{
+		$vendeur = new Vendeur();
+		$vendeur->name = $app->request->post('vendeur');
+		$vendeur->mail = $app->request->post('vendeur-email');
+		$vendeur->num_tel = $app->request->post('vendeur-telephone');
+		$vendeur->save();
+	}
+	$annonce->id_vendeur = $vendeur->id_vendeur;
+	$annonce->save();
+	$max_image = 3;
+	for ($i = 1;  $i <= $max_image; $i++)
+	{
+		if($app->request->post('img-url-'.$i) != null)
+		{
+			$img = new Image();
+			$img->url = $app->request->post('img-url-'.$i);
+			$img->id_annonce = $annonce->id_annonce;
+			$img->save();
+		}
+	}
+	$app->redirect($app->urlFor("accueil"));
+
+})->name("/valider-modif");
+
 ?>

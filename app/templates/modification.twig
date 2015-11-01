@@ -14,7 +14,7 @@
         </select></br>
         Superficie : <input type="number" name="superficie" value="{{ annonce.superficie }}"><br/>
         Prix : <input type="number" name="prix" value="{{ annonce.prix }}"><br/>
-        Nombre de pièce : <input type="text" name="nb_piece" value="{{ annonce.nb_piece }}"><br/>
+        Nombre de piï¿½ce : <input type="text" name="nb_piece" value="{{ annonce.nb_piece }}"><br/>
 
         <select name="ville" id="VilleActu">
             {% for ville in villes %}
@@ -38,10 +38,10 @@
         <input type="text" name="vendeur" value="test" value="{{ annonce.vendeur.name }}">
         Votre email :
         <input type="email" name="vendeur-email" value="{{ annonce.vendeur.mail }}">
-        Votre numéro de téléphone :
+        Votre numï¿½ro de tï¿½lï¿½phone :
         <input type="number" name="vendeur-telephone" value="{{ annonce.vendeur.num_tel }}">
 
         <br/>
-        <input type="submit" name="modif" value="Modifier votre annonce">
+        <input type="submit" name="valider-modif" value="Modifier votre annonce">
     </form>
 {% endfor %}
