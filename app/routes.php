@@ -56,17 +56,12 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
-
-
 		$resAnnonce = Annonce::with('image','type','quartier','vendeur','quartier.ville')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
 		if ( $app->request->post('Ville') != "----") {
-
-
 			$resAnnonce = $resAnnonce->whereHas('quartier.ville', function ($query) use($app){
-
 	  			$query->where('nom','=',$app->request->post('Ville') );
   			});
 
@@ -118,8 +113,6 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
 	));
-
-
 })->name('resultat');
 
 
