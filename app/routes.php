@@ -58,7 +58,6 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 
-<<<<<<< HEAD
 
 
 		$resAnnonce = Annonce::with('image', 'quartier')
@@ -66,7 +65,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 		// Ville
 		if ( $app->request->post('Ville') != "----") {
-=======
+
 		$resAnnonce = Annonce::with('image','type','quartier','vendeur','quartier.ville')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
@@ -83,16 +82,16 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 	  			$query->where('nom','=',$app->request->post('Ville') );
   			});
 
-<<<<<<< HEAD
+$
 		}
-=======
+
 		}*/
 
->>>>>>> 78f3bc9a7d3e33ae9e255ce301ded5eb09af90c2
+
 
 		// Par type
 		if ( $app->request->post('Type') != "----") {
-			
+
 			$resAnnonce = $resAnnonce->whereHas('type', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Type') );
 
@@ -101,7 +100,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 		// Par quartier
 		if ( $app->request->post('Quartier') != "----") {
-			
+
 			$resAnnonce = $resAnnonce->whereHas('quartier', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Quartier') );
   			});
@@ -217,7 +216,6 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
-<<<<<<< HEAD
 $app->post('/suppression/:id', function($id) use($app) {
 	$annonce = Annonce::with('vendeur')
 		->where("id_annonce", "=", $id)
@@ -225,8 +223,7 @@ $app->post('/suppression/:id', function($id) use($app) {
 	$app->redirect($app->urlFor("accueil"));
 })->name("suppression");
 
-=======
->>>>>>> 78f3bc9a7d3e33ae9e255ce301ded5eb09af90c2
+
 
 //Validation modification
 
@@ -268,9 +265,5 @@ $app->post('/valider-modif/:id/', function($id) use ($app) {
 	$app->redirect($app->urlFor("accueil"));
 
 })->name("/valider-modif");
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 78f3bc9a7d3e33ae9e255ce301ded5eb09af90c2
 ?>
