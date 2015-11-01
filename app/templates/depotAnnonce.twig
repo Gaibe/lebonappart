@@ -41,11 +41,11 @@
     <option value="vente">vente</option>
     <option value="location">location</option>
   </select></br>
-  Superficie : <input type="number" step="0.1" name="superficie"><br/>
+  Superficie : <input type="number" name="superficie"><br/>
 
 
 
-  Prix : <input type="number" name="prix"><br/>
+  Prix : <input type="number" step="0.01" name="prix"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
   <select name="ville" id="VilleActu">
@@ -65,7 +65,12 @@
     <option value={{type.id_type}}>{{type.nom}}</option>
   {% endfor %}
   </select>
-</br>
+  </br>
+  Entrer jusqu'à 3 liens d'image :
+  <input type='url' name="img-url-1">
+  <input type='url' name="img-url-2">
+  <input type='url' name="img-url-3">
+  </br>
   Votre email :
   <input type="email" name="vendeur-email">
   </br>

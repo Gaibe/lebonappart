@@ -133,7 +133,31 @@ $app->post('/depot', function() use ($app) {
 		$vendeur->save();
 	}
 	$annonce->id_vendeur = $vendeur->id_vendeur;
+
 	$annonce->save();
+
+	if($app->request->post('img-url-1') != null)
+	{
+		$img = new Image();
+		$img->url = $app->request->post('img-url-1');
+		$img->id_annonce = $annonce->id_annonce;
+		$img->save();
+	}
+	if($app->request->post('img-url-2') != null)
+	{
+		$img = new Image();
+		$img->url = $app->request->post('img-url-2');
+		$img->id_annonce = $annonce->id_annonce;
+		$img->save();
+	}
+	if($app->request->post('img-url-3') != null)
+	{
+		$img = new Image();
+		$img->url = $app->request->post('img-url-3');
+		$img->id_annonce = $annonce->id_annonce;
+		$img->save();
+	}
+
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 
