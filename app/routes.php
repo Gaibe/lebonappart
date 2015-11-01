@@ -80,12 +80,15 @@ $app->post('/depot', function() use ($app) {
 	$annonce->loc_vente = $app->request->post('loc_vente');
 	$annonce->prix = $app->request->post('prix');
 	$annonce->nb_piece = $app->request->post('nb_piece');
-	$annonce->type = $app->request->post('type');
-	$annonce->quartier = $app->request->post('quartier');
-	$annonce->ville = $app->request->post('ville');
+	$annonce->id_type = $app->request->post('type');
+	$annonce->id_vendeur = 1;
+	$annonce->id_quartier = $app->request->post('quartier');
 
-	var_dump($annonce);
-	// $annonce->save();
-	// $app->redirect($app->urlFor("accueil"));
+	// $vendeur = new Vendeur();
+	// $vendeur = Vendeur::where('email', '=', $app->request->post('vendeur-email'));
+
+
+	$annonce->save();
+	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 ?>

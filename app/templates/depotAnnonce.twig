@@ -1,4 +1,4 @@
-<script language="javascript" type="text/javascript">
+﻿<script language="javascript" type="text/javascript">
 <!--
   function init(){
 
@@ -50,21 +50,28 @@
 
   <select name="ville" id="VilleActu">
     {% for ville in villes %}
-      <option value={{ville.nom}}>{{ville.nom}}</option>
+      <option value={{ville.id_ville}}>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
    <select name="quartier" id="QuartierActu" > <!-- onchange="actualiser()" -->
   {% for quart in quartiers %}
-    <option value={{quart.nom}}>{{quart.nom}}</option>
+    <option value={{quart.id_quartier}}>{{quart.nom}}</option>
   {% endfor %}
   </select>
 
   <select name="type">
   {% for type in types %}
-    <option value={{type.nom}}>{{type.nom}}</option>
+    <option value={{type.id_type}}>{{type.nom}}</option>
   {% endfor %}
   </select>
+</br>
+  Votre nom :
+  <input type="text" name="vendeur">
+  Votre email :
+  <input type="email" name="vendeur-email">
+  Votre numéro de téléphone :
+  <input type="number" name="vendeur-telephone">
 
   <br/>
   <input type="submit" name="lanceDepot" value="Deposer votre annonce">
