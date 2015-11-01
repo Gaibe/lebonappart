@@ -174,7 +174,6 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	$types = Type::all();
 	$quartiers = Quartier::all();
 
-	echo($annonce);
 	$app->render('modification.twig', array(
 		'types'=> $types,
 		'quartiers'=> $quartiers,
