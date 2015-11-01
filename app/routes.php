@@ -60,15 +60,29 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 		
 
-		$resAnnonce = Annonce::
-	where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+		$resAnnonce = Annonce::with('image')
+		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
+		// Ville
+		if ( $app->request->post('Ville') != "----") {
+
+			$resAnnonce = $resAnnonce->with('Quartier');
+
+			$resAnnonce = $resAnnonce->whereHas('quartier', function ($query) use($app){
+
+
+
+	  			$query->where('nom','=',$app->request->post('Ville') );
+  			});
+
+		}
 
 		// Par type
 		if ( $app->request->post('Type') != "----") {
 			$resAnnonce = $resAnnonce->with('Type');
 			$resAnnonce = $resAnnonce->whereHas('type', function ($query) use($app){
       			$query->where('nom','=',$app->request->post('Type') );
+
   			});
 
 		}
@@ -103,6 +117,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 			$resAnnonce = $resAnnonce->where('prix','>=',$app->request->post('prix'));
 		}
 
+		
 		$resAnnonce = $resAnnonce->get();
 
 
