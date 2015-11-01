@@ -60,7 +60,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 		
 
-		$resAnnonce = Annonce::with('image')
+		$resAnnonce = Annonce::with('image', 'quartier')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
 		// Ville
@@ -118,7 +118,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 
 		
-		$resAnnonce = $resAnnonce->get();
+		$resAnnonce = $resAnnonce->limit->(6)->get();
 
 
 	$app->render('resultat.twig', array(
