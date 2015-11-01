@@ -136,26 +136,16 @@ $app->post('/depot', function() use ($app) {
 
 	$annonce->save();
 
-	if($app->request->post('img-url-1') != null)
+	$max_image = 3;
+	for ($i = 1;  $i <= $max_image; $i++) 
 	{
-		$img = new Image();
-		$img->url = $app->request->post('img-url-1');
-		$img->id_annonce = $annonce->id_annonce;
-		$img->save();
-	}
-	if($app->request->post('img-url-2') != null)
-	{
-		$img = new Image();
-		$img->url = $app->request->post('img-url-2');
-		$img->id_annonce = $annonce->id_annonce;
-		$img->save();
-	}
-	if($app->request->post('img-url-3') != null)
-	{
-		$img = new Image();
-		$img->url = $app->request->post('img-url-3');
-		$img->id_annonce = $annonce->id_annonce;
-		$img->save();
+		if($app->request->post('img-url-'.$i) != null)
+		{
+			$img = new Image();
+			$img->url = $app->request->post('img-url-'.$i);
+			$img->id_annonce = $annonce->id_annonce;
+			$img->save();
+		}
 	}
 
 	$app->redirect($app->urlFor("accueil"));
