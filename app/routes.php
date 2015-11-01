@@ -120,10 +120,17 @@ $app->post('/depot', function() use ($app) {
 	$annonce->id_vendeur = 1; // ??
 	$annonce->id_quartier = $app->request->post('quartier');
 
-	// $vendeur = new Vendeur();
-	// $vendeur = Vendeur::where('email', '=', $app->request->post('vendeur-email'));
-
-
+	$vendeur = new Vendeur();
+	$vendeur = Vendeur::where('mail', '=', $app->request->post('vendeur-email'))->first();
+	if ($vendeur == null)
+	{
+		$vendeur = new Vendeur();
+		$vendeur->name = $app->request->post('vendeur');
+		$vendeur->mail = $app->request->post('vendeur-email');
+		$vendeur->num_tel = $app->request->post('vendeur-telephone');
+		$vendeur->save();
+	}
+	$annonce->id_vendeur = $vendeur->id_vendeur;
 	$annonce->save();
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
