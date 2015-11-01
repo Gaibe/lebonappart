@@ -41,11 +41,13 @@ Aide à la création des diagrammes de séquences
 
 Programmation :
 
+Routes :
 - Page accueil
 - Recherche annonce
 - Résultat recherche annonce
-Avec les fichier twig associés.
-
+Twig :
+- Résultats des recherches
+- 
 
 ####  - Kévin
 

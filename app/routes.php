@@ -31,8 +31,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	));
 })->name('recherche');
 
-//Pour essayer de récuperer le contenu de Annonce::with('quartier')
-$resAnnonce="";
+
 
 
 
@@ -51,7 +50,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 
 
-$app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
+$app->post('/Votre-recherche' , function () use ($app) {
 		$resAnnonce = Annonce::with('image','type', 'quartier','quartier.ville','vendeur')
 		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 
