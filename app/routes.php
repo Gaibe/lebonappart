@@ -16,11 +16,11 @@ $app->get('/', function () use ($app) {
 
 
 $app->get('/Rechercher-vos-annonces' , function () use ($app) {
-	
+
 	$villes = Ville::all();
 	$types = Type::all();
 	$quartiers = Quartier::all();
-	
+
 
 
 	$villes = Ville::with('Quartier')->get();
@@ -57,9 +57,13 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
-		$resAnnonce = Annonce::with('Type')
-		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+
 		
+
+		$resAnnonce = Annonce::
+	where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+
+
 		// Par type
 		if ( $app->request->post('Type') != "----") {
 			$resAnnonce = $resAnnonce->with('Type');
@@ -76,7 +80,7 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
   			});
 
 		}
-		
+
 		// Location / vente
 		if (!( $app->request->post('location') != NULL && $app->request->post('vente') != NULL) ) {
 			//location
@@ -100,13 +104,13 @@ $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 		}
 
 		$resAnnonce = $resAnnonce->get();
-	
+
 
 	$app->render('resultat.twig', array(
 		'annonces' => $resAnnonce,
 	));
-	
-	
+
+
 })->name('resultat');
 
 
@@ -139,7 +143,7 @@ $app->post('/depot', function() use ($app) {
 	$annonce->save();
 
 	$max_image = 3;
-	for ($i = 1;  $i <= $max_image; $i++) 
+	for ($i = 1;  $i <= $max_image; $i++)
 	{
 		if($app->request->post('img-url-'.$i) != null)
 		{
@@ -154,9 +158,10 @@ $app->post('/depot', function() use ($app) {
 })->name('depot');
 
 $app->get('/:id', function($id) use ($app) {
-
-	$annonce = Annonce::where("id_annonce", "=", $id)->get();
+	$annonce = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
+				->where("id_annonce", "=", $id)->get();
+	//$annonce = Annonce::where("id_annonce", "=", $id)->get();
 	$app->render('annonce.twig', array(
 		'annonce' => $annonce));
-})->name("annonce");
+})->name('annonce');
 ?>
