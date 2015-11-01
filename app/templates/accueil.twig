@@ -11,7 +11,7 @@
     {% for annonce in annonces %}
         <li>
 
-        {{ annonce.description }}
+        <a href={{annonce.id_annonce}}>{{ annonce.description }}</a>
         {% for image in annonce.image %}
         	<img style="max-width:250px;" src={{image.url}}>
  		{% endfor %}

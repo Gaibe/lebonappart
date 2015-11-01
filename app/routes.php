@@ -53,6 +53,8 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 		));
 })->name('deposer-votre-annonce');
 
+
+
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 
@@ -134,4 +136,11 @@ $app->post('/depot', function() use ($app) {
 	$annonce->save();
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
+
+$app->get('/:id', function($id) use ($app) {
+
+	$annonce = Annonce::where("id_annonce", "=", $id)->get();
+	$app->render('annonce.twig', array(
+		'annonce' => $annonce));
+})->name("annonce");
 ?>
