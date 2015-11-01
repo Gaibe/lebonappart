@@ -53,6 +53,8 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 		));
 })->name('deposer-votre-annonce');
 
+
+
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
 	
@@ -144,11 +146,39 @@ $app->post('/depot', function() use ($app) {
 	$annonce->id_vendeur = 1; // ??
 	$annonce->id_quartier = $app->request->post('quartier');
 
-	// $vendeur = new Vendeur();
-	// $vendeur = Vendeur::where('email', '=', $app->request->post('vendeur-email'));
-
+	$vendeur = new Vendeur();
+	$vendeur = Vendeur::where('mail', '=', $app->request->post('vendeur-email'))->first();
+	if ($vendeur == null)
+	{
+		$vendeur = new Vendeur();
+		$vendeur->name = $app->request->post('vendeur');
+		$vendeur->mail = $app->request->post('vendeur-email');
+		$vendeur->num_tel = $app->request->post('vendeur-telephone');
+		$vendeur->save();
+	}
+	$annonce->id_vendeur = $vendeur->id_vendeur;
 
 	$annonce->save();
+
+	$max_image = 3;
+	for ($i = 1;  $i <= $max_image; $i++) 
+	{
+		if($app->request->post('img-url-'.$i) != null)
+		{
+			$img = new Image();
+			$img->url = $app->request->post('img-url-'.$i);
+			$img->id_annonce = $annonce->id_annonce;
+			$img->save();
+		}
+	}
+
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
+
+$app->get('/:id', function($id) use ($app) {
+
+	$annonce = Annonce::where("id_annonce", "=", $id)->get();
+	$app->render('annonce.twig', array(
+		'annonce' => $annonce));
+})->name("annonce");
 ?>
