@@ -57,8 +57,8 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 
 $app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
 
-		$resAnnonce = Annonce::
-	where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
+		$resAnnonce = Annonce::with('Type')
+		->where('description', 'LIKE','%'.$app->request->post('motcle').'%' );
 		
 		// Par type
 		if ( $app->request->post('Type') != "----") {
