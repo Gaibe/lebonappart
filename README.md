@@ -21,7 +21,9 @@ Création du diagramme des classes
 
 Création de la base de données
 
-Programmation
+Programmation du depot d'annonce
+
+Amérlioration du rendu de la page d'accueil
 
 
 ####  - Fabien
