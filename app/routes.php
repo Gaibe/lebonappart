@@ -6,7 +6,7 @@ $app->get('/', function () use ($app) {
 	$urlRech = $app->urlFor('recherche');
 
 	$annonces = Annonce::with('image', 'type', 'quartier', 'quartier.ville', 'vendeur')
-				->limit(3)->get(); //limit si beaucoup annonces
+				->limit(3)->orderBy('id_annonce', 'DESC')->get();
 	$app->render('accueil.twig', array(
 		'annonces'=> $annonces,
 		'url' =>$urlDepot,
@@ -16,18 +16,13 @@ $app->get('/', function () use ($app) {
 
 
 $app->get('/Rechercher-vos-annonces' , function () use ($app) {
-	// marche pas $villes = Ville::with('Quartier')->get();
+	
 	$villes = Ville::all();
 	$types = Type::all();
-
-//	dont work
 	$quartiers = Quartier::all();
-	//var_dump($quartiers);
-	// <select name="Quartier">
-  // {% for quart in quartiers %}
-  //   <option>{{quart.nom}}</option>
-  // {% endfor %}
-  // </select>
+	
+
+
 	$villes = Ville::with('Quartier')->get();
 
 	$urlResult = $app->urlFor('resultat');
@@ -35,7 +30,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	$app->render('recherche.twig', array(
 		'villes'=> $villes,
 		'types'=> $types,
-		//'quartiers'=> $quartiers,
+		'quartiers'=> $quartiers,
 		'res'	=>	$urlResult,
 	));
 })->name('recherche');
@@ -43,19 +38,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 //Pour essayer de récuperer le contenu de Annonce::with('quartier')
 $resAnnonce="";
 
-$app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
-	$app->render('resultat.twig');
-	$resAnnonce = Annonce::with('quartier')->get();
 
-
-	->where('ville.nom','=',$_POST['Ville']);
-	foreach($resAnnonce as $value){
-		var_dump($value);
-	//	GLHF
-
-	}
-})->name('resultat');
-//var_dump("test ".$resAnnonce);
 
 $app->get('/deposer-votre-annonce' , function () use ($app) {
 	$villes = Ville::all();
@@ -70,6 +53,20 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 		));
 })->name('deposer-votre-annonce');
 
+$app->post('/Votre-recherche' , function () use ($app,$resAnnonce) {
+	
+	$resAnnonce = Annonce::where('description', 'LIKE','%'.$app->request->post('motcle').'%' )->get(); 
+
+	$app->render('resultat.twig', array(
+		'annonces' => $resAnnonce,
+	));
+	
+})->name('resultat');
+
+
+
+
+
 $app->post('/depot', function() use ($app) {
 	$annonce = new Annonce();
 	$annonce->description = $app->request->post('description');
@@ -78,7 +75,7 @@ $app->post('/depot', function() use ($app) {
 	$annonce->prix = $app->request->post('prix');
 	$annonce->nb_piece = $app->request->post('nb_piece');
 	$annonce->id_type = $app->request->post('type');
-	$annonce->id_vendeur = 1;
+	$annonce->id_vendeur = 1; // ??
 	$annonce->id_quartier = $app->request->post('quartier');
 
 	// $vendeur = new Vendeur();
