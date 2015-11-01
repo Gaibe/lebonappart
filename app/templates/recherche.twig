@@ -18,12 +18,15 @@
   Tarif entre : <input type="number" name="min_tarif"> et <input type="number" name="max_tarif"><br/>
   Nombre de pièce : <input type="text" name="nb_piece"><br/>
 
+Ville :
   <select name="Ville">
+    <option selected >----</option>
     {% for ville in villes %}
       <option>{{ville.nom}}</option>
     {% endfor %}
   </select>
 
+Type :
   <select name="Type">
     <option selected >----</option>
   {% for type in types %}
@@ -33,7 +36,10 @@
   {% endfor %}
   </select>
 
+Quartier :
   <select name="Quartier">
+
+    <option selected >----</option>
    {% for quart in quartiers %}
     <option>{{quart.nom}}</option>
   {% endfor %}
