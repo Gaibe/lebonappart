@@ -30,9 +30,16 @@ Création des relations avec Eloquent
 
 ####  - Fabien
 
-Création des diagrammes de séquences
+Création diagramme de séquences :
+- DiagrammeVendeur
 
-Programmation
+Programmation initial :
+- depotAnnonce.twig
+- recherche.twig
+- contactVendeur.twig
+
+Routes(route.php) :
+- modification d'annonce (valider-modif)
 
 
 ####  - Adrien
