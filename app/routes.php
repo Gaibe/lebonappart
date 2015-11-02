@@ -1,5 +1,7 @@
 <?php
 
+//Page d'accueil
+
 $app->get('/', function () use ($app) {
 
 	$urlDepot = $app->urlFor('deposer-votre-annonce');
@@ -14,6 +16,7 @@ $app->get('/', function () use ($app) {
 	));
 })->name('accueil');
 
+//Page de recherche d'annonce
 
 $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 
@@ -30,6 +33,7 @@ $app->get('/Rechercher-vos-annonces' , function () use ($app) {
 	));
 })->name('recherche');
 
+//Page de dépôt d'annonce
 
 $app->get('/deposer-votre-annonce' , function () use ($app) {
 	$villes = Ville::all();
@@ -44,7 +48,7 @@ $app->get('/deposer-votre-annonce' , function () use ($app) {
 		));
 })->name('deposer-votre-annonce');
 
-
+//Affichage de la recherche
 
 $app->post('/Votre-recherche' , function () use ($app) {
 		$resAnnonce = Annonce::with('image','type', 'quartier','quartier.ville','vendeur')
@@ -109,7 +113,7 @@ $app->post('/Votre-recherche' , function () use ($app) {
 
 
 
-
+//Depot d'une annonce dans la base de données
 
 $app->post('/depot', function() use ($app) {
 	$annonce = new Annonce();
@@ -151,7 +155,7 @@ $app->post('/depot', function() use ($app) {
 	$app->redirect($app->urlFor("accueil"));
 })->name('depot');
 
-
+//Avoir le détail d'une annonce
 
 $app->get('/:id', function($id) use ($app) {
 
@@ -162,7 +166,7 @@ $app->get('/:id', function($id) use ($app) {
 })->name("annonce");
 
 
-
+//Ouverture page de modification
 
 $app->post('/modification/:id/', function($id) use ($app) {
 
@@ -182,7 +186,12 @@ $app->post('/modification/:id/', function($id) use ($app) {
 	));
 })->name("modification");
 
+//suppression d'annonce
+
 $app->post('/suppression/:id', function($id) use($app) {
+	$image = Image::with('annonce')
+		->where("id_annonce", "=", $id)
+		->delete();
 	$annonce = Annonce::with('vendeur')
 		->where("id_annonce", "=", $id)
 		->delete();
